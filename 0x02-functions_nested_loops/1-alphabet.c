@@ -5,11 +5,10 @@
  *
  *always Return: 0
  */
-void _putchar(char c)
+void _putchar(void)
 {
-	char 1;
+	char i;
 	
-	for (i = 'i' ; i = 'z'; i++)
+	for (i = 'a' ; i = 'z'; i++)
 		_putchar(i);
-return (0);
 }
