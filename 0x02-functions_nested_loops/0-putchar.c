@@ -1,10 +1,10 @@
 #include <stdio.h>
 /*
- * maincheck code
+ * main: check the code
  *
  * Return: 0
  */
-int main()
+int main(void)
 {
 	printf("_putchar");
 return (0);
