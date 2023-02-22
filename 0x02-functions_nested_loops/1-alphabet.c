@@ -5,7 +5,7 @@
  *
  *always Return: 0
  */
-void _putchar(void)
+char _putchar(char c)
 {
 	char i;
 
