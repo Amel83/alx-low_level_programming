@@ -26,10 +26,9 @@ int main(int ac, char *av[])
 		return (2);
 	}
 	if (n > 0)
-		printf("%02x", *f++);
+		printf("%x", *f++);
 	for (i = 1; i < n; i++)
-		printf(" %02x", *f++);
-	if (n > 0)
-		printf("\n");
+		printf(" %x", *f++);
+	printf("\n");
 	return (0);
 }
