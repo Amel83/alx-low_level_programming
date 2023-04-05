@@ -20,13 +20,16 @@ if (index == 0)
 free(temp);
 return (1);
 }
-if (i < index - 1)
+if(i == index)
 {
-temp = temp->next;
-i++;
-}
 next_node = temp->next;
 temp->next = next_node->next;
 free(next_node);
 return (1);
+}
+{
+temp = temp->next;
+i++;
+}
+return (-1);
 }
