@@ -1,20 +1,18 @@
 #include "lists.h"
 /**
  * pop_listint - it deletes the head and returns the head node data
- * @head - points the element
- *@n: is number of data
- *                                                       * Return: nothing
+ * @head: points the element
+ * Return: nothing
  */
-int pop_listint(list_t **head)
+int pop_listint(listint_t **head)
 {
-        int i == 0;
-        listint_t *temp;
+	int i = 0;
+	listint_t *temp;
 
-        temp = *head;
-        i = temp->next;
-        *head = (*head)->next;
-        free(temp);
-        if (*head == NULL || head == NULL)
-                return(0);
-        return(i);
+	i = temp->n;
+	*head = (*head)->next;
+	free(temp);
+	return (i);
+	if (*head == NULL || head == NULL)
+	return (0);
 }
