@@ -8,28 +8,33 @@
  */
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
-listint_t *next_node;
-unsigned int i = 0;
-listint_t *temp;
-temp = *head;
-if (*head == NULL || head == NULL)
-return (-1);
-if (index == 0)
-{
-*head = (*head)->next;
-free(temp);
-return (1);
-}
-if(i == index)
-{
-next_node = temp->next;
-temp->next = next_node->next;
-free(next_node);
-return (1);
-}
-{
-temp = temp->next;
-i++;
-}
-return (-1);
+	listint_t *next_node = *head;
+	unsigned int i = 0;
+	listint_t *temp;
+
+	if (*head == NULL || head == NULL)
+		return (-1);
+
+	if (index == 0)
+	{
+		*head = (next_node)->next;
+		free(next_node);
+		return (1);
+	}
+
+	temp = *head;
+	while (temp)
+	{
+		if(i == index)
+		{
+			next_node = temp->next;
+			temp->next = next_node->next;
+			free(next_node);
+			return (1);
+		}
+	
+		temp = temp->next;
+		i++;
+	}
+	return (-1);
 }
