@@ -1,19 +1,20 @@
 #include <stdio.h>
 #include "main.h"
+/**
+ * get_endianness - function that checks the endianness.
+ * 
+ *
+ * Return: 0 if big endian, 1 if little endian
+ */
 int get_endianness(void)
 {
-  unsigned int x = 0x76543210;
-  char *c = (char*) &x;
- 
-  printf ("*c is: 0x%x\n", *c);
-  if (*c == 0x10)
-  {
-    printf ("Underlying architecture is little endian. \n");
-  }
-  else
-  {
-     printf ("Underlying architecture is big endian. \n");
-  }
- 
-  return x;
+	char *c;
+	unsigned int x = 0x76543210;
+	
+	x = 2;
+	c = (char*) &x;
+	if (*c)
+		return (1);
+	return (0);
+
 }
