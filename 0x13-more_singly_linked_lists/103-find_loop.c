@@ -7,26 +7,26 @@
  */
 listint_t *find_listint_loop(listint_t *head)
 {
-	listint_t *slow, *fast;
+	listint_t *temp, *ptr;
 
 	if (head == NULL || head->next == NULL)
 		return (NULL);
-	slow = head->next;
-	fast = head->next->next;
-	while (fast && fast->next)
+	temp = head->next;
+	ptr = head->next->next;
+	while (ptr && ptr->next)
 	{
-		if (slow == fast)
+		if (temp == ptr)
 		{
-			slow = head;
-			while (slow != fast)
+			temp = head;
+			while (temp != ptr)
 			{
-				slow = slow->next;
-				fast = fast->next;
+				temp = temp->next;
+				ptr = ptr->next;
 			}
-			return (slow)
+			return (temp);
 		}
-		slow = slow->next;
-		fast = fast->next->next;
+		temp = temp->next;
+		ptr = ptr->next->next;
 	}
 	return (NULL);
 }

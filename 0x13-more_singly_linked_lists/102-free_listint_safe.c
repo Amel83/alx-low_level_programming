@@ -2,7 +2,7 @@
 
 /**
  * free_listint_safe - Frees lists in the loop
- * @h: Pointer to the elements in the list 
+ * @h: Pointer to the elements in the list
  *
  * Return: The number of freed list
  */
