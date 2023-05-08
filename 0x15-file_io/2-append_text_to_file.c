@@ -1,37 +1,58 @@
-#include <stdio.h>
+#include <stdlib.h>
+#include "main.h"
+#include <unistd.h>
+#include <fcntl.h>
+#include <string.h>
 /**
- * append_text_to_file - write text from the end of the file
- * @text_content: points to the written text
- * @filename: points to the file
- *
- * Return: pointer
+ * append_text_to_file - adding chars at the end of a file
+ * @filename: file to adjust
+ * @text_content: file to add
+ * Return: the added file
  */
 int append_text_to_file(const char *filename, char *text_content)
 {
-	int i;
-	FILE *fp;
+	ssize_t len;
+	ssize_t ret;
+	int fd;
 
 	if (filename == NULL)
 	{
 		return (-1);
 	}
+	fd = open(filename, O_WRONLY | O_APPEND);
+	if (fd == -1)
+	{
+		return (-1);
+	}
 
-	if (text_content == NULL)
+	if (text_content != NULL)
 	{
-		return (-1);
+		len = my_strlen(text_content);
+		ret = write(fd, text_content, len);
+		if (ret != len)
+		{
+			close(fd);
+			return (-1);
+		}
 	}
-	fp = fopen(filename, "a");
-	if (fp == NULL)
-	{
-		return (-1);
-	}
-	i = fputs(text_content, fp);
-	if (i == EOF)
-	{
-		fclose(fp);
-		return (-1);
-	}
-	fclose(fp);
+
+	close(fd);
 	return (1);
+}
+
+/**
+ * my_strlen - to count the length of string
+ * @str: pointer to string
+ * Return: the number of chars
+ */
+size_t my_strlen(char *str)
+{
+	size_t length = 0;
+
+	while (*str++ != '\0')
+	{
+		length++;
+	}
+	return (length);
 }
 
