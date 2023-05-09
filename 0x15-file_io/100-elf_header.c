@@ -123,7 +123,7 @@ void print_osabi(unsigned char *e_ident)
 		case ELFOSABI_STANDALONE:
 			printf("Standalone App\n");
 			break;
-		default: printf("<unknown: %d>\n", e_ident[EI_OSABI]); break;
+		default: printf("<unknown: %x>\n", e_ident[EI_OSABI]);
 	}
 }
 
@@ -142,7 +142,7 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 		case ET_EXEC: printf("EXEC (Executable file)\n"); break;
 		case ET_DYN: printf("DYN (Shared object file)\n"); break;
 		case ET_CORE: printf("CORE (Core file)\n"); break;
-		default: printf("<unknown: %d>\n", e_type); break;
+		default: printf("<unknown: %x>\n", e_type);
 	}
 }
 
@@ -167,7 +167,7 @@ void close_elf(int elf)
 	if (close(elf) == -1)
 	{
 		dprintf(STDERR_FILENO,
-				"Error: Can't close fd %d\n", elf);
+			"Error: Can't close fd %d\n", elf);
 		exit(98);
 	}
 }
@@ -177,12 +177,6 @@ int main(int __attribute__((__unused__)) argc, char *argv[]) {
 	int fd, r;
 	Elf64_Ehdr *ehdr;
 
-	if (argc != 2) {
-		fprintf(stderr, "Usage: %s <ELF file>\n", argv[0]);
-		exit(1);
-	}
-
-	
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1) {
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
