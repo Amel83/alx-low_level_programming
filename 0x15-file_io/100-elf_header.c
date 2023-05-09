@@ -1,28 +1,8 @@
-
-#include <elf.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-void check_elf(unsigned char *header);
-void print_magic(unsigned char *header);
-void print_class(unsigned char *header);
-void print_data(unsigned char *header);
-void print_version(unsigned char *header);
-void print_abi(unsigned char *e_ident);
-void print_osabi(unsigned char *e_ident);
-void print_type(unsigned int e_type, unsigned char *e_ident);
-void print_entry(unsigned long int e_entry, unsigned char *e_ident);
-void close_elf(int elf);
+#include "main.h"
 /**
- * * check_elf - Checks if a file is an ELF file.
- * * @header: A pointer to an array containing the ELF magic numbers.
- * *
- * * Description: If the file is not an ELF file - exit code 98.
- * */
+ * check_elf - check
+ * @header: A pointer 
+ */
 void check_elf(unsigned char *header)
 {
 	int index;
@@ -41,11 +21,9 @@ void check_elf(unsigned char *header)
 }
 
 /**
- * * print_magic - Prints the magic numbers of an ELF header.
- * * @header: A pointer to an array containing the ELF magic numbers.
- * *
- * * Description: Magic numbers are separated by spaces.
- * */
+ * print_magic - check
+ * @header: A pointer to an array
+ */
 void print_magic(unsigned char *header)
 {
 	int index;
@@ -64,9 +42,9 @@ void print_magic(unsigned char *header)
 }
 
 /**
- * * print_class - Prints the class of an ELF header.
- * * @header: A pointer to an array containing the ELF class.
- * */
+ * print_class - check
+ * @header: A pointer to an array
+ */
 void print_class(unsigned char *header)
 {
 	printf("  Class:                             ");
@@ -88,9 +66,9 @@ void print_class(unsigned char *header)
 }
 
 /**
- * * print_data - Prints the data of an ELF header.
- * * @header: A pointer to an array containing the ELF class.
- * */
+ * print_data - check
+ * @header: A pointer to an array 
+ */
 void print_data(unsigned char *header)
 {
 	printf("  Data:                              ");
@@ -112,9 +90,9 @@ void print_data(unsigned char *header)
 }
 
 /**
- * * print_version - Prints the version of an ELF header.
- * * @header: A pointer to an array containing the ELF version.
- * */
+ * print_version - gives the version
+ * @header: A pointer to an array 
+ */
 void print_version(unsigned char *header)
 {
 	printf("  Version:                           %d",
@@ -131,7 +109,10 @@ void print_version(unsigned char *header)
 	}
 }
 
-
+/**
+ * print_osabi - check
+ * @e_ident: A pointer to an array
+ */
 void print_osabi(unsigned char *e_ident)
 {
 	printf("  OS/ABI:                            ");
