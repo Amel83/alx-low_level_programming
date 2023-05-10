@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * check_elf - check
- * @header: A pointer 
+ * @header: A pointer
  */
 void check_elf(unsigned char *header)
 {
@@ -10,12 +10,12 @@ void check_elf(unsigned char *header)
 	for (index = 0; index < 4; index++)
 	{
 		if (header[index] != 127 &&
-					header[index] != 'E' &&
-						header[index] != 'L' &&
-							header[index] != 'F')
+			header[index] != 'E' &&
+			header[index] != 'L' &&
+			header[index] != 'F')
 		{
-				dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
-					exit(98);
+			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
+			exit(98);
 		}
 	}
 }
@@ -67,7 +67,7 @@ void print_class(unsigned char *header)
 
 /**
  * print_data - check
- * @header: A pointer to an array 
+ * @header: A pointer to an array
  */
 void print_data(unsigned char *header)
 {
@@ -91,7 +91,7 @@ void print_data(unsigned char *header)
 
 /**
  * print_version - gives the version
- * @header: A pointer to an array 
+ * @header: A pointer to an array
  */
 void print_version(unsigned char *header)
 {
@@ -154,8 +154,10 @@ void print_osabi(unsigned char *e_ident)
 	}
 }
 
-
-
+/**
+ * print_abi - check
+ * @e_ident: pointer
+ */
 void print_abi(unsigned char *e_ident)
 {
 	printf("  ABI Version:                       %d\n",
@@ -163,10 +165,10 @@ void print_abi(unsigned char *e_ident)
 }
 
 /**
- * * print_type - type of elf
- * * @e_type: tells what type
- * * @e_ident: A pointer to an array
- * */
+ * print_type - type of elf
+ * @e_type: tells what type
+ * @e_ident: A pointer to an array
+ */
 void print_type(unsigned int e_type, unsigned char *e_ident)
 {
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
@@ -197,10 +199,10 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 }
 
 /**
- * * print_entry - check the code
- * * @e_entry: The address of the ELF.
- * * @e_ident: A pointer to an array
- * */
+ * print_entry - check the code
+ * @e_entry: The address of the ELF.
+ * @e_ident: A pointer to an array
+ */
 void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 {
 	printf("  Entry point address:               ");
@@ -236,7 +238,7 @@ void close_elf(int elf)
 /**
  * main - calls all the function
  * @argc: counter
- * @argv: An array of pointers 
+ * @argv: An array of pointers
  * Return: 0 on success.
  */
 int main(int __attribute__((__unused__)) argc, char *argv[])
