@@ -4,7 +4,7 @@
 
 /**
  * main - generate a keygen
- * @argc: no of arguments 
+ * @argc: no of arguments
  * @argv: arguments
  * Return: 0 on success, 1 on error
  */
