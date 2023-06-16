@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 		i += argv[1][num] * argv[1][num];
 	p[4] = l[(i ^ 239) & 63];
 	for (i = 0, num = 0; (char)num < argv[1][0]; num++)
-		num = rand();
+		i = rand();
 	p[5] = l[(i ^ 229) & 63];
 	printf("%s\n", p);
 	return (0);
