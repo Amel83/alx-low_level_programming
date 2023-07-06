@@ -1,6 +1,7 @@
-#ifndef
-#define
+#ifndef HASH_TABLE_H
+#define HASH_TABLE_n
 
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -49,23 +50,10 @@ typedef struct hash_table_s
  * @stail: A pointer to the last element of the sorted linked list
  */
 
-typedef struct zhash_node_s
-{
-	char *key;
-	char *value;
-	struct zhash_node_s *next;
-	struct zhash_node_s *previous;
-	struct zhash_node_s *next_element;
-} zhash_node_t;
 
 
-typedef struct zhash_table_s
-{
-	unsigned long int size;
-	shash_node_t **array;
-	shash_node_t *shead;
-	shash_node_t *stail;
-} zhash_table_t;
+
+
 
 
 hash_table_t *hash_table_create(unsigned long int size);
@@ -77,5 +65,7 @@ void hash_table_print(const hash_table_t *ht);
 void hash_table_delete(hash_table_t *ht);
 
  
+void free_array(hash_node_t* array);
+void free_table(hash_table_t* table);
 hash_node_t* create_item(char* key, char* value);
 #endif
