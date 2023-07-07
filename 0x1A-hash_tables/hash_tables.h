@@ -67,5 +67,10 @@ void hash_table_delete(hash_table_t *ht);
  
 void free_array(hash_node_t* array);
 void free_table(hash_table_t* table);
-hash_node_t* create_item(char* key, char* value);
+hash_node_t* create_item(const char* key, const char* value);
+unsigned long hash_function(const char* str);
+
+
+
+
 #endif
