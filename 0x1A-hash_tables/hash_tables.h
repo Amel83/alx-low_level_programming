@@ -1,5 +1,5 @@
 #ifndef HASH_TABLE_H
-#define HASH_TABLE_n
+#define HASH_TABLE_H
 
 #include <string.h>
 #include <stdio.h>
@@ -15,9 +15,9 @@
  */
 typedef struct hash_node_s
 {
-     char *key;
-     char *value;
-     struct hash_node_s *next;
+	char *key;
+	char *value;
+	struct hash_node_s *next;
 } hash_node_t;
 
 /**
@@ -30,31 +30,9 @@ typedef struct hash_node_s
  */
 typedef struct hash_table_s
 {
-     unsigned long int size;
-     hash_node_t **array;
+	unsigned long int size;
+	hash_node_t **array;
 } hash_table_t;
-
-/**
- *
- *
- */
-
-/**
- * struct shash_table_s - Sorted hash table data structure
- *
- * @size: The size of the array
- * @array: An array of size @size
- * Each cell of this array is a pointer to the first node of a linked list,
- * because we want our HashTable to use a Chaining collision handling
- * @shead: A pointer to the first element of the sorted linked list
- * @stail: A pointer to the last element of the sorted linked list
- */
-
-
-
-
-
-
 
 hash_table_t *hash_table_create(unsigned long int size);
 unsigned long int hash_djb2(const unsigned char *str);
@@ -64,13 +42,9 @@ char *hash_table_get(const hash_table_t *ht, const char *key);
 void hash_table_print(const hash_table_t *ht);
 void hash_table_delete(hash_table_t *ht);
 
- 
-void free_array(hash_node_t* array);
-void free_table(hash_table_t* table);
-hash_node_t* create_item(const char* key, const char* value);
-unsigned long hash_function(const char* str);
-
-
-
+void free_array(hash_node_t *array);
+void free_table(hash_table_t *table);
+hash_node_t *create_item(const char *key, const char *value);
+unsigned long hash_function(const char *str);
 
 #endif
