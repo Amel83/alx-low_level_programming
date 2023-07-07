@@ -1,33 +1,45 @@
 #include "hash_tables.h"
 
-#define CAPACITY 50000 
-unsigned long hash_function(const char* str)
-{
-        int j;
-    unsigned long i = 0;
-
-    for ( j = 0; str[j]; j++)
-        i += str[j];
-
-    return i % CAPACITY;
-}
-
+/**
+ * hash_table_set - Adds an element to the hash table
+ * @ht: The hash table to add/update the key/value to
+ * @key: The key (cannot be an empty string)
+ * @value: The value associated with the key (can be an empty string)
+ *
+ * Return: 1 if it succeeded, 0 otherwise
+ */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t* array = create_item(key, value);
-	unsigned long int count = 0;
-	unsigned long int index = hash_function(key);
-	hash_node_t* current_item = ht->array[index];
-	if (current_item == NULL)
+	unsigned long int index;
+	hash_node_t *new_node, *temp;
+
+	if (ht == NULL || key == NULL || *key == '\0')
+		return 0;
+
+	index = key_index((const unsigned char *)key, ht->size);
+
+	temp = ht->array[index];
+	while (temp != NULL)
 	{
-		if (count == ht->size)
+		if (strcmp(temp->key, key) == 0)
 		{
-			printf("Insert Error: Hash Table is full\n");
-			free_array(array);
-			return (0);
+			free(temp->value);
+			temp->value = strdup(value);
+			if (temp->value == NULL)
+				return 0;
+			return 1;
 		}
-		ht->array[index] = array;
-		count++;
+		temp = temp->next;
 	}
-	return (1);
+
+
+	new_node = create_item(key, value);
+	if (new_node == NULL)
+		return 0;
+
+
+	new_node->next = ht->array[index];
+	ht->array[index] = new_node;
+
+	return 1;
 }
