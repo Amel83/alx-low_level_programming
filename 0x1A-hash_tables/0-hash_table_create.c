@@ -37,9 +37,9 @@ hash_table_t *hash_table_create(unsigned long int size)
 }
 
 /**
- * free_array - no leaking
- * @array: parameter
- */
+* free_array - no leaking
+* @array: parameter
+*/
 
 void free_array(hash_node_t *array)
 {
@@ -49,9 +49,9 @@ void free_array(hash_node_t *array)
 }
 
 /**
- * free_table - freeing
- * @ht: table
- */
+* free_table - freeing
+* @ht: table
+*/
 
 void free_table(hash_table_t *ht)
 {
