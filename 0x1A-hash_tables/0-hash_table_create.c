@@ -7,10 +7,17 @@
  */
 hash_node_t *create_item(const char *key, const char *value)
 {
-	hash_node_t *array = (hash_node_t *) malloc(sizeof(hash_node_t));
+	hash_node_t *array;
 
+	hash_node_t *array = (hash_node_t *) malloc(sizeof(hash_node_t));
+	if (hash_node == NULL)
+		return (NULL);
 	array->key = (char *) malloc(strlen(key) + 1);
+	if (array->key == NULL)
+		return (NULL);
 	array->value = (char *) malloc(strlen(value) + 1);
+	if (array->value == NULL)
+		return (NULL);
 
 	strcpy(array->key, key);
 	strcpy(array->value, value);
@@ -28,9 +35,12 @@ hash_table_t *hash_table_create(unsigned long int size)
 	unsigned long int i;
 	hash_table_t *ht = (hash_table_t *) malloc(sizeof(hash_table_t));
 
+	if (*ht == NULL)
+		return (NULL);
 	ht->size = size;
 	ht->array = (hash_node_t **) calloc(ht->size, sizeof(hash_node_t *));
-
+	if ((ht->array) == NULL)
+		return (NULL);
 	for (i = 0; i < ht->size; i++)
 		ht->array[i] = NULL;
 	return (ht);
