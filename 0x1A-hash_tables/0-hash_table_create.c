@@ -7,10 +7,10 @@
  */
 hash_node_t *create_item(const char *key, const char *value)
 {
-	hash_node_t *array;
 
 	hash_node_t *array = (hash_node_t *) malloc(sizeof(hash_node_t));
-	if (hash_node == NULL)
+
+	if (array == NULL)
 		return (NULL);
 	array->key = (char *) malloc(strlen(key) + 1);
 	if (array->key == NULL)
@@ -35,7 +35,7 @@ hash_table_t *hash_table_create(unsigned long int size)
 	unsigned long int i;
 	hash_table_t *ht = (hash_table_t *) malloc(sizeof(hash_table_t));
 
-	if (*ht == NULL)
+	if (ht == NULL)
 		return (NULL);
 	ht->size = size;
 	ht->array = (hash_node_t **) calloc(ht->size, sizeof(hash_node_t *));
