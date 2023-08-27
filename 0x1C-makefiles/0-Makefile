@@ -1,2 +1,2 @@
 output: school.c main.c
-	g++ school.c main.c -o school
+	gcc school.c main.c -o school
