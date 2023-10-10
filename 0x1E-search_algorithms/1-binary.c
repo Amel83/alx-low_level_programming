@@ -1,11 +1,10 @@
 #include "search_algos.h"
 
 /**
-  * binary_search - one of the searching algorithms 
-  * @array: A pinter of the elements 
-  * @size: size of the elements 
+  * binary_search - one of the searching algorithms
+  * @array: A pinter of the elements
+  * @size: size of the elements
   * @value: the number serarched
-  *
   * Return: the index when success
   */
 int binary_search(int *array, size_t size, int value)
